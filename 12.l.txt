@@ -1,0 +1,14 @@
+%{
+%}
+
+%%
+
+[a-zA-Z]+  { printf("WORD: %s\n", yytext); }
+">"|"<"|"<="|">="|"=="|"!="      { printf("RELATIONAL OPERATOR: %s\n", yytext); }
+%%
+int yywrap(){}
+int main() {
+printf("enter combination of words and relationalop:");
+  yylex();
+  return 0;
+}

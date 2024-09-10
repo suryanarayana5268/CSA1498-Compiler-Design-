@@ -1,0 +1,31 @@
+%{
+%}
+
+%%
+
+[0-9]+[.][0-9]+ printf("%s :floating point number\n",yytext);
+
+"bool"|"int"|"float"|"main"|"printf"|"int"|"char"|"float"|"double"|"void"|"if"|"while"|"for"|"do"|"main"|"return"|"else"|"elseif"  printf("%s :keyword\n",yytext);
+
+[0-9]+ printf("%s:integer number\n",yytext);
+
+[,.{}();] printf("%s:punctutators\n",yytext);
+
+[a-zA-Z][a-zA-Z0-9]* printf("%s:identifier\n",yytext);
+\"[a-zA-Z0-9_ ]+\" {printf("\n%s :string",yytext);} 
+
+
+[+=*/-] printf("%s:operator\n",yytext);
+%%
+
+int yywrap()
+{
+	return 1;
+}
+
+int main()
+{
+  printf("enter input:");
+	yylex();
+	return 0;
+}

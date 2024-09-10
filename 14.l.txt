@@ -1,0 +1,25 @@
+%{
+float op1, op2; 
+%} 
+%% 
+"+" { printf("sum = %f\n", op1 + op2); } 
+"-" { printf("diff = %f\n", op1 - op2); } 
+"*" { printf("mul = %f\n", op1 * op2); } 
+"/" { 
+    if (op2 != 0) 
+        printf("div = %f\n", op1 / op2); 
+    else 
+        printf("Error: Division by zero is not allowed.\n"); 
+} 
+. { printf("Invalid operator. Please enter a valid operator.\n"); } 
+%% 
+int yywrap() {} 
+int main() { 
+    printf("Enter number 1: "); 
+    scanf("%f", &op1); 
+    printf("Enter number 2: "); 
+    scanf("%f", &op2); 
+    printf("Enter the Operator (+, -, *, /): "); 
+    yylex(); 
+    return 0; 
+}

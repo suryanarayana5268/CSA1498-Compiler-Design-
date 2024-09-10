@@ -1,0 +1,12 @@
+%{
+%}
+%%
+[0-3][0-9]\/[0-1][0-9]\/[1-2][0-9]{3} {printf("dob is valid");}
+.+ {printf("dob is invalid");}
+%%
+int yywrap(){}
+int main()
+{
+printf("enter DOB:");
+yylex();
+}

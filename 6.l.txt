@@ -1,0 +1,21 @@
+%{
+%}
+
+%%
+
+if|else|main|int|for|while|return|break|float|char|include {printf("\nit is keyword\n");}
+[a-zA-z][a-zA-z0-9]* {printf("\n it is identifier\n");}
+.+ {printf("\n invalid input \n");}
+
+%%
+
+int yywrap() {}
+
+int main()
+
+{
+printf("\nenter keyword or identifier\n");
+yylex();
+printf("\n");
+return 0;
+}
