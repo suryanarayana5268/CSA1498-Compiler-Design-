@@ -1,0 +1,26 @@
+%{  
+#include<stdio.h>  
+#include<string.h>  
+char replace_with [100];  
+char replace [100];  
+%}  
+%%  
+[a-zA-Z]+ { if(strcmp(yytext, replace)==0)  
+  fprintf(yyout, "%s", replace_with);  
+    else 
+  fprintf(yyout, "%s", yytext);}  
+.   fprintf(yyout, "%s", yytext);  
+%%  
+int yywrap()  
+{  
+ return 1;  
+}  
+int main()  
+{ 
+  printf("enter replacing string:\n");
+scanf("%s",&replace);
+printf("\nenter replacing with string:\n");
+scanf("%s",&replace_with);
+printf("enter a input string:\n");
+   yylex();  
+}
