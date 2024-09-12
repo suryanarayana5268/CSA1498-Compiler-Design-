@@ -1,0 +1,14 @@
+%{
+%}
+
+%%
+
+[a-z] { printf("%c", toupper(yytext[0])); }
+.|\n { printf("%s", yytext); }
+%%
+int yywrap(){}
+int main() {
+printf("enter your text:");
+  yylex();
+  return 0;
+}
