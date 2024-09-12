@@ -1,0 +1,25 @@
+%{
+#include <stdio.h>
+#include <string.h>
+char word[100];
+int count = 0;
+%}
+%%
+([a-zA-Z0-9]+) {
+ if (strcmp(yytext, word) == 0) {
+ count++;
+ }
+}
+.|\n { } // Ignore other characters
+%%
+int yywrap() { return 1; }
+int main()
+{
+ printf("Enter the word to count: ");
+ scanf("%s", word);
+ printf("Enter the sentence: ");
+ getchar(); // Clear the newline chara
+yylex();
+ printf("The word '%s' occurred %d times.\n", word, count);
+ return 0;
+}
