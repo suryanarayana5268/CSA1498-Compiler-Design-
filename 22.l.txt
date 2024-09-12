@@ -1,0 +1,24 @@
+%{
+#include <string.h>
+char words[1000] = "";
+char numbers[1000] = "";
+%}
+%%
+
+[0-9]+ { strcat(numbers, yytext);
+strcat(numbers, " "); }  
+[a-zA-Z]+ { strcat(words, yytext); 
+strcat(words, " ");} 
+.|\n { }
+%%
+int yywrap() {
+    return 1;  
+}
+
+int main() {
+printf("enter a input:");
+    yylex();
+ printf("Words: %s \n", words);
+    printf("Numbers: %s\n", numbers);
+    return 0;
+}
